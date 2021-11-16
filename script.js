@@ -1,11 +1,12 @@
-//constant variables from .html
+//constants
 const grid = document.querySelector(".game-grid");
+const position = grid.childNodes;
 
 //grid_square is a node list
 let grid_square = [];
-let position = grid.childNodes;
 let entity;
-let entity_postion= 104;
+let laser = 104;
+let entity_postion = 104;
 
 //setting up game grid
 for (let i=0; i < 110; i++){
@@ -17,9 +18,9 @@ for (let i=0; i < 110; i++){
 
 //setting up the invaders positions
 const invadersArr = [
-    0, 1, 2, 3, 4, 5,
-    11, 12, 13, 14, 15, 16,
-    22, 23, 24, 25, 26, 27
+    0, 1, 2, 3, 4,
+    11, 12, 13, 14, 15,
+    22, 23, 24, 25, 26,
 ];
 
 //assigning invaders to grid
@@ -31,38 +32,60 @@ for (let i=0; i < invadersArr.length; i++){
 //default position bottom middle 
 entity = position[entity_postion].classList.add("entity");
 
+
+
 //document detect when arrows are pressed and runs function to move enitity
 document.onkeydown = detectArrow;
 
 //moving the entity
 function detectArrow(e) {
     entity = position[entity_postion].classList.remove("entity");
-    //stays on bottom line
-    if (entity_postion <= 100) {
-        entity_postion = 100;
-    } 
-
-    if (entity_postion >= 110) {
-        entity_postion = 110;
-    } 
+    //stays on bottom line 
 
     switch (e.key) {
         case ("ArrowLeft") :
             //left arrow
-            entity_postion = entity_postion-1;
-            entity = position[entity_postion].classList.add("entity");
+            if (entity_postion !=99){
+                entity_postion = entity_postion-1;
+                entity = position[entity_postion].classList.add("entity");
+            } else {
+                entity = position[entity_postion].classList.add("entity");
+            }
         break;
         case ("ArrowRight") :
-            entity_postion = entity_postion+1;
-            entity = position[entity_postion].classList.add("entity");
-        break;
+            //right arrow
+            if (entity_postion != 109){
+                entity_postion = entity_postion+1;
+                entity = position[entity_postion].classList.add("entity"); 
+            }else {
+                entity = position[entity_postion].classList.add("entity");
+            }
+            break;
         case ("ArrowUp") :
             //up arrow
+            //shooting
             entity = position[entity_postion].classList.add("entity");
-            alert("hi")
+
+            //laser movement 100ms speed
+            for (let i = 1; i < 10; i++) {
+                (function(i) {
+                    setTimeout(function() { 
+                    position[laser].classList.remove("laser");
+                    laser = entity_postion -11*[i];
+                    position[laser].classList.add("laser"); 
+                }, 100 * i);
+                })(i);
+                }
+
+                if (laser<=10){
+                    position[laser].classList.remove("laser");
+                    console.log("working")
+                }
+            
         break;
         default:
             entity = position[entity_postion].classList.add("entity");
             break;
     }
 }
+
