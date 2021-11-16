@@ -1,4 +1,10 @@
 button {
-    height: 30px;
+    height: 45px;
+    width: 100px;
     margin-bottom: 20px;
+    padding: 10px;
+    background-color: $primary-color;
+    color: $tertiary-color;
+    font-size: 17px;
+    border-radius: 10px;
 }
