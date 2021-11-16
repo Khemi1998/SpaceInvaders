@@ -1,0 +1,26 @@
+* {
+    font-family: 'Press Start 2P', cursive;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    color: $secondary-color;
+    border: 1px solid rgb(0, 255, 55);
+    height: 100px;
+    top: 0px;
+}
+
+h3 {
+    height: 30px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid green;
+}
+
+h4 {
+    height: 25px;
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px solid green;
+}
