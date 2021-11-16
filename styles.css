@@ -62,9 +62,24 @@ main {
   align-items: center;
 }
 
-div {
+.game-grid {
   height: 400px;
   width: 450px;
   display: flex;
   flex-wrap: wrap;
+}
+
+div {
+  border: 1px solid green;
+  height: 40px;
+  width: 40px;
+}
+
+.invaders {
+  background-color: #0e3842;
+  border-radius: 50%;
+}
+
+.entity {
+  background-color: #06a5b1;
 }
