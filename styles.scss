@@ -29,6 +29,7 @@ main {
     justify-content: space-between;
     gap: 20px;
     align-items: center;
+    box-shadow: 0 0 5px 1px $secondary-color;
 }
 
 .game-grid {
@@ -57,4 +58,8 @@ div {
 
 .laser {
     background-color: darkgreen;
+}
+
+.boom{
+    background-color: darkred;
 }

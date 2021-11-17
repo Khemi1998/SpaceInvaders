@@ -1,6 +1,5 @@
 button {
   height: 45px;
-  width: 100px;
   margin-bottom: 20px;
   padding: 10px;
   background-color: #6a9113;
@@ -61,6 +60,7 @@ main {
   justify-content: space-between;
   gap: 20px;
   align-items: center;
+  box-shadow: 0 0 5px 1px #141517;
 }
 
 .game-grid {
@@ -86,4 +86,8 @@ div {
 
 .laser {
   background-color: darkgreen;
+}
+
+.boom {
+  background-color: darkred;
 }
