@@ -1,9 +1,14 @@
 button {
     height: 45px;
     margin-bottom: 20px;
+    width: 150px;
     padding: 10px;
     background-color: $primary-color;
     color: $tertiary-color;
     font-size: 17px;
     border-radius: 10px;
+}
+
+.refresh {
+    display: none;
 }

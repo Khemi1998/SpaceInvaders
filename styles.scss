@@ -21,7 +21,7 @@ main {
     background-color: $tertiary-color;
     margin-top: 50px;
     border: 5px solid $primary-color;
-    border-radius: 30px;
+    border-radius: 10px;
     height: 700px;
     width: 470px;
     display: flex;
@@ -57,7 +57,7 @@ div {
 }
 
 .laser {
-    background-color: darkgreen;
+    background-color: $quarternary-color;
 }
 
 .boom{
