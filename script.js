@@ -61,7 +61,7 @@ play.addEventListener ("click",() => {
         }
     }
 
-    const invaders = setInterval(invaderMove, 125);
+    const invaders = setInterval(invaderMove, 200);
 
     /*
     METHOD1 DOESNT WORK
@@ -116,20 +116,28 @@ play.addEventListener ("click",() => {
                     entity = position[entity_postion].classList.add("entity");
 
                     function _laser() {
+
                         position[laser].classList.remove("laser");
                         laser -=11;
+                        if (laser>11){
                         position[laser].classList.add("laser");
-
-                        //collision
-                        if (position[laser].classList.contains("invaders")){
-                            position[laser].classList.remove("laser");
-                            //stops lasers
+                        }
+                        else{
                             clearInterval(laserGone);
                         }
+                        //collision
+                        //stops lasers
+                        if (position[laser].classList.contains("invaders")){
+                            position[laser].classList.remove("laser");
+                            clearInterval(laserGone);
+                        }
+                      
                     } 
                     //speed 100ms
-                    const laserGone =setInterval(_laser,200)
-
+                    const laserGone = setInterval(_laser,25)
+                    position.forEach((square)=>{
+                        position[laser].classList.remove("laser");
+                    })
                     /*
                     MEDTHOD1 DOESNT WORK
                       //laser movement 200ms
