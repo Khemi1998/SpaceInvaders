@@ -1,6 +1,7 @@
 //constants
 const grid = document.querySelector(".game-grid");
 const play = document.querySelector(".gameAction")
+const result = document.querySelector(".result")
 
 const position = grid.childNodes;
 
@@ -10,6 +11,7 @@ let entity;
 let laser = 104;
 let entity_postion = 104;
 let incrementer = 0;
+let deadInvaders =[];
 
 //setting up game grid
 for (let i=0; i < 110; i++){
@@ -35,34 +37,31 @@ for (let i=0; i < invadersArr.length; i++){
 //default position bottom middle 
 entity = position[entity_postion].classList.add("entity");
 
-let deadInvaders = [];
 //--------------------------------------------------------------------------------------
 
 
 
 //game activation by pressing play
-play.addEventListener ("click",() => {
-    
-    //invaders movement
-/*
-    function _invaderMovement() {
-    for(let j=0; j<84; j++){
-        position[j].classList.remove("invaders");
-        position[11+j].classList.remove("invaders");
-        position[22+j].classList.remove("invaders");
-    }}
-*/
-    function test() {
-            //_invaderMovement()
-            let i=0; 
-            //i<84; 
-            i++;       
-            invadersArr.forEach((invader)=>{
-            invader = invader + i;
-            position[invader].classList.add("invaders");
-    })}
+play.addEventListener ("click",() => {    
 
-    setInterval(test,100)
+    //invaders movement
+    function invaderMove() {
+        position[incrementer].classList.remove("invaders");
+        position[11+incrementer].classList.remove("invaders");
+        position[22+incrementer].classList.remove("invaders");
+
+        position[5+incrementer].classList.add("invaders");
+        position[16+incrementer].classList.add("invaders");
+        position[27+incrementer].classList.add("invaders");
+        incrementer++;
+
+        if (position[109].classList.contains("invaders")) {
+            clearInterval(invaders);
+            result.innerHTML="YOU LOSE!"
+        }
+    }
+
+    const invaders = setInterval(invaderMove, 125);
 
     /*
     METHOD1 DOESNT WORK
@@ -129,7 +128,7 @@ play.addEventListener ("click",() => {
                         }
                     } 
                     //speed 100ms
-                    const laserGone =setInterval(_laser,100)
+                    const laserGone =setInterval(_laser,200)
 
                     /*
                     MEDTHOD1 DOESNT WORK
