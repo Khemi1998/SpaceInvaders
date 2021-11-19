@@ -8,12 +8,9 @@ const position = grid.childNodes;
 
 //grid_square is a node list
 let grid_square = [];
-let entity;
 let laser = 104;
 let entity_postion = 104;
-let incrementer = 0;
 let score = 0;
-let deads= []
 
 //setting up game grid
 for (let i=0; i < 110; i++){
@@ -24,20 +21,38 @@ for (let i=0; i < 110; i++){
 }
 
 //setting up the invaders positions
-const invadersArr = [
-    0, 1, 2, 3, 4,
-    11, 12, 13, 14, 15,
-    22, 23, 24, 25, 26,
+const invadersToparr = [
+    0, 1, 2, 3, 4
 ];
 
-//assigning invaders to grid
-for (let i=0; i < invadersArr.length; i++){
+//assigning invaders to grid function 
+const showInvader =invadersArr => {
+    for (let i=0; i < invadersArr.length; i++){
     position[invadersArr[i]].classList.add("invaders");
+}}
+
+showInvader(invadersToparr);
+
+//new invader position function
+const newPosition = invadersArr => {
+
+    //remove first row fo array
+    let firstRowinvader = invadersArr.shift();
+
+    //remove class of next position
+    position[firstRowinvader].classList.remove("invaders");
+    
+    //declare last invader
+    let lastRowinvader = invadersArr[invadersArr.length-1];
+
+    //move along
+    invadersArr.push(lastRowinvader+1);
+
 }
 
 //assigning enitity to grid
 //default position bottom middle 
-entity = position[entity_postion].classList.add("entity");
+position[entity_postion].classList.add("entity");
 
 //restart
 refresh.addEventListener("click", ()=> {
@@ -54,6 +69,11 @@ play.addEventListener ("click",() => {
 
     //invaders movement
     function invaderMove() {
+        newPosition(invadersToparr);
+        showInvader(invadersToparr);
+
+
+        /* LONG WINDED METHOD
         position[incrementer].classList.remove("invaders");
         position[11+incrementer].classList.remove("invaders");
         position[22+incrementer].classList.remove("invaders");
@@ -62,6 +82,7 @@ play.addEventListener ("click",() => {
         position[16+incrementer].classList.add("invaders");
         position[27+incrementer].classList.add("invaders");
         incrementer++;
+        */
 
         if (position[109].classList.contains("invaders")) {
             clearInterval(invaders);
@@ -70,7 +91,7 @@ play.addEventListener ("click",() => {
     }
 
     const invaders = setInterval(invaderMove, 200);
-
+/*
     /*
     METHOD1 DOESNT WORK
     for(let i=0; i<84; i++){
@@ -164,11 +185,9 @@ play.addEventListener ("click",() => {
                     MEDTHOD1 DOESNT WORK
                       //laser movement 200ms
                       laser=entity_postion;
-
                     for (let i = 1; (i <= 9); i++) {
                         (function(i) {
                             setTimeout(function() { 
-
                             position[laser].classList.remove("laser");
                             laser -=11;
                             position[laser].classList.add("laser");
@@ -193,5 +212,3 @@ play.addEventListener ("click",() => {
     }})
 
     //----------------------------------------------------------------------------
-
-    
