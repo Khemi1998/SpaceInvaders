@@ -87,7 +87,8 @@ play.addEventListener("click", () => {
     if (position[entity_postion].classList.contains("invaders")) {
       clearInterval(invaders);
       position[entity_postion].classList.remove("invaders");
-      position[entity_postion].classList.add("boom")
+      position[entity_postion].classList.remove("entity")
+      position[entity_postion].classList.add("crash")
       result.innerHTML="YOU LOSE!"
     }
   }
@@ -144,7 +145,7 @@ play.addEventListener("click", () => {
 
             //explosion
             position[laser].classList.add("boom");
-            setTimeout(boomGone, 120);
+            setTimeout(boomGone, 30);
 
             if (invadersBottomArray.includes(laser)) {
                 invadersBottomArray = invadersBottomArray.filter(invader => invader != laser);
@@ -183,7 +184,7 @@ refresh.addEventListener("click", () => {
 
   clearInterval(invaders);
   
-  position[entity_postion].classList.remove("boom");
+  position[entity_postion].classList.remove("crash");
   result.innerHTML="";
   position[entity_postion].classList.remove("entity");
   

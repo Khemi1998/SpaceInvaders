@@ -3,10 +3,12 @@ button {
   margin-bottom: 20px;
   width: 150px;
   padding: 10px;
-  background-color: #6a9113;
-  color: white;
+  border: 2px solid #efd6fb;
+  box-shadow: 0px 0px 5px 5px #e75be8;
+  color: #efd6fb;
   font-size: 17px;
   border-radius: 10px;
+  background-color: transparent;
 }
 
 .refresh {
@@ -21,9 +23,12 @@ button {
 h1 {
   text-align: center;
   padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   color: #141517;
   height: 100px;
   top: 0px;
+  color: #efd6fb;
 }
 
 h3 {
@@ -34,10 +39,11 @@ h3 {
 
 h4 {
   height: 25px;
-  padding: 20px;
+  padding: 10px;
   margin-bottom: 10px;
   width: 450px;
   text-align: center;
+  color: #5ae6fb;
 }
 
 * {
@@ -56,10 +62,11 @@ body {
 }
 
 main {
-  background-color: white;
+  background-color: #19284f;
   margin-top: 50px;
-  border: 5px solid #6a9113;
-  border-radius: 10px;
+  border: 5px solid #efd6fb;
+  box-shadow: 0px 0px 10px 10px #e75be8;
+  border-radius: 5px;
   height: 700px;
   width: 470px;
   display: flex;
@@ -67,7 +74,6 @@ main {
   justify-content: space-between;
   gap: 20px;
   align-items: center;
-  box-shadow: 0 0 5px 1px #141517;
 }
 
 .game-grid {
@@ -83,18 +89,25 @@ div {
 }
 
 .invaders {
-  background-color: #141517;
+  background-color: #efd6fb;
+  box-shadow: 0px 0px 1px 1px #e75be8;
   border-radius: 50%;
 }
 
 .entity {
-  background-color: #6a9113;
+  background-color: #0f90b1;
+  box-shadow: 0px 0px 10px 10px #5ae6fb;
 }
 
 .laser {
-  background-color: darkgreen;
+  background-color: #5ae6fb;
 }
 
 .boom {
+  background-color: red;
+  border-radius: 50%;
+}
+
+.crash {
   background-color: red;
 }
