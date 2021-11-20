@@ -45,6 +45,7 @@
     border-radius: 10px;
     background-color: transparent;
     margin-bottom: 5px;
+    box-shadow: 0px 0px 2px 2px #e75be8;
   }
 
   .refresh {
@@ -111,7 +112,7 @@ h4 {
 }
 
 body {
-  background-image: url("/retro.jpeg");
+  background-image: url("./retro.jpeg");
   background-size: cover;
   display: flex;
   flex-direction: row;
