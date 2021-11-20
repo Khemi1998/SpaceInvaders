@@ -2,16 +2,16 @@
     height: 45px;
     width: 150px;
     padding: 10px;
-    border: 2px solid rgb(239, 214, 251);
-    box-shadow: 0px 0px 5px 5px rgb(231, 91, 232);
-    color: rgb(239, 214, 251);
+    border: 2px solid $primary-color;
+    box-shadow: 0px 0px 5px 5px $secondary-color;
+    color: $primary-color;
     font-size: 17px;
     border-radius: 10px;
     background-color: transparent;
 }
 
 .main:hover {
-    box-shadow: 0px 0px 10px 10px rgb(231, 91, 232);
+    box-shadow: 0px 0px 10px 10px $secondary-color;
 }
 
 .refresh {
@@ -22,7 +22,7 @@
 
 .control {
     height: 45px;
-    color: rgb(90, 230, 251);
+    color: $tertiary-color;
     background-color: transparent;
     text-align: center;
     padding: 5px;
@@ -45,7 +45,7 @@
         border-radius: 10px;
         background-color: transparent;
         margin-bottom: 5px;
-        box-shadow: 0px 0px 2px 2px rgb(231, 91, 232);
+        box-shadow: 0px 0px 2px 2px $secondary-color;
     }
     
     .refresh {

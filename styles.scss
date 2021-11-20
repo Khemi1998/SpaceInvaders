@@ -17,10 +17,10 @@ body {
 }
   
 main {
-    background-color: rgb(25, 40, 79);
+    background-color: $backgroundcolour;
     margin-top: 50px;
-    border: 5px solid rgb(239, 214, 251);
-    box-shadow: 0px 0px 10px 10px rgb(231, 91, 232);
+    border: 5px solid $primary-color;
+    box-shadow: 0px 0px 10px 10px $secondary-color;
     border-radius: 5px;
     height: 700px;
     width: 470px;
@@ -54,18 +54,18 @@ section {
 }
 
 .invaders {
-    background-color: rgb(239, 214, 251);
-    box-shadow: 0px 0px 1px 1px rgb(231, 91, 232);
+    background-color: $primary-color;
+    box-shadow: 0px 0px 1px 1px $secondary-color;
     border-radius: 50%;
 }
 
 .entity {
-    background-color: rgb(15, 144, 177);
-    box-shadow: 0px 0px 10px 10px rgb(90, 230, 251);
+    background-color: $quarternary-color;
+    box-shadow: 0px 0px 10px 10px $tertiary-color;
 }
 
 .laser {
-    background-color: rgb(90, 230, 251);
+    background-color: $tertiary-color;
 }
 
 .boom {
@@ -110,7 +110,6 @@ section {
     }
 
     .entity {
-        background-color: rgb(15, 144, 177);
-        box-shadow: 0px 0px 5px 5px rgb(90, 230, 251);
+        box-shadow: 0px 0px 2.5px 2.5px $tertiary-color;
     }
     }

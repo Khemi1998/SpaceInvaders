@@ -75,7 +75,7 @@ h1 {
   padding-top: 20px;
   padding-left: 10px;
   padding-right: 10px;
-  color: #141517;
+  color: #e75be8;
   height: 80px;
   top: 0px;
   color: #efd6fb;
@@ -207,7 +207,6 @@ section {
   }
 
   .entity {
-    background-color: #0f90b1;
-    box-shadow: 0px 0px 5px 5px #5ae6fb;
+    box-shadow: 0px 0px 2.5px 2.5px #5ae6fb;
   }
 }
