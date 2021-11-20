@@ -56,3 +56,4 @@
 <p>iteration19: scaling for smaller devices</p>
 <p>iteration20: upload current version of README.md</p>
 <p>iteration21: up to date version: variables fixed</p>
+<p>iteration22: adjust background scaling</p>
