@@ -54,7 +54,10 @@ const moveArray = invadersArr => {
 //default position bottom middle
 entity = position[entity_postion].classList.add("entity");
 
-
+//function to remove explosion
+function boomGone() {
+    position[laser].classList.remove("boom");
+}
 
 //--------------------------------------------------------------------------------------
 
@@ -138,6 +141,10 @@ play.addEventListener("click", () => {
           //stops lasers
           if (position[laser].classList.contains("invaders")) {
             console.log(laser);
+
+            //explosion
+            position[laser].classList.add("boom");
+            setTimeout(boomGone, 120);
 
             if (invadersBottomArray.includes(laser)) {
                 invadersBottomArray = invadersBottomArray.filter(invader => invader != laser);
