@@ -113,8 +113,8 @@ h4 {
 }
 
 body {
-  background-image: url("./retro.jpg");
-  background-size: 100% 100%;
+  background-image: url("./retro.jpeg");
+  background-size: 1920px 1020px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -186,7 +186,7 @@ section {
   }
 
   main {
-    margin-top: 5%;
+    margin-top: 30%;
     height: 200%;
     width: 85%;
   }
