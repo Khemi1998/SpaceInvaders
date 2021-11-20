@@ -8,7 +8,6 @@
     font-size: 17px;
     border-radius: 10px;
     background-color: transparent;
-    //margin-bottom: 2vh;
 }
 
 .main:hover {
@@ -35,4 +34,34 @@
 .left, .right {
     font-size: 60px;
     margin-bottom: 6vh;
+}
+
+@media only screen and (max-width: 375px) {
+    .main {
+        height: 20px;
+        padding-top: 5px;
+        padding: 5px;
+        font-size: 10px;
+        border-radius: 10px;
+        background-color: transparent;
+        margin-bottom: 5px;
+    }
+    
+    .refresh {
+        font-size: 10px;
+    }
+    
+    .control {
+        padding: 3px;
+    }
+
+    .fire{
+        font-size: 10px;
+    }
+    
+    .left, .right {
+        font-size: 40px;
+        margin-bottom: 6vh;
+        padding: 0 7px;
+    }
 }

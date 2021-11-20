@@ -36,6 +36,35 @@
   margin-bottom: 6vh;
 }
 
+@media only screen and (max-width: 375px) {
+  .main {
+    height: 20px;
+    padding-top: 5px;
+    padding: 5px;
+    font-size: 10px;
+    border-radius: 10px;
+    background-color: transparent;
+    margin-bottom: 5px;
+  }
+
+  .refresh {
+    font-size: 10px;
+  }
+
+  .control {
+    padding: 3px;
+  }
+
+  .fire {
+    font-size: 10px;
+  }
+
+  .left, .right {
+    font-size: 40px;
+    margin-bottom: 6vh;
+    padding: 0 7px;
+  }
+}
 * {
   font-family: "Press Start 2P", cursive;
 }
@@ -60,16 +89,30 @@ h4 {
   display: none;
 }
 
+@media only screen and (max-width: 375px) {
+  h1 {
+    padding-top: 10px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  h4 {
+    height: 20px;
+    padding: 10px;
+    width: 450px;
+    font-size: 10px;
+    display: none;
+  }
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  height: auto;
 }
 
 body {
   background-image: url("/retro.jpeg");
-  background-size: 100% 100%;
+  background-size: cover;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -106,7 +149,7 @@ section {
   justify-content: space-around;
   width: 100%;
   height: 3vh;
-  margin-bottom: 2vh;
+  margin-bottom: 5vh;
   text-align: center;
   align-items: center;
 }
@@ -135,8 +178,35 @@ section {
   background-color: red;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
   .control {
     display: block;
+  }
+}
+@media only screen and (max-width: 450px) {
+  main {
+    margin-top: 5%;
+    height: 200%;
+    width: 85%;
+  }
+
+  .game-grid {
+    height: 200px;
+    width: 225px;
+  }
+
+  div {
+    height: 20px;
+    width: 20px;
+  }
+
+  section {
+    margin-bottom: 0.5vh;
+    justify-content: space-between;
+  }
+
+  .entity {
+    background-color: #0f90b1;
+    box-shadow: 0px 0px 5px 5px #5ae6fb;
   }
 }

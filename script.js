@@ -15,6 +15,7 @@ const position = grid.childNodes;
 let laser = 104;
 let entity_postion = 104;
 let score = 0;
+let deadInvader;
 
 //setting up game grid
 for (let i = 0; i < 110; i++) {
@@ -145,11 +146,16 @@ function shooting(){
       setTimeout(boomGone, 5);
 
       if (invadersBottomArray.includes(laser)) {
-          invadersBottomArray = invadersBottomArray.filter(invader => invader != laser);
+        deadInvader= invadersBottomArray.indexOf(laser);
+        invadersBottomArray.splice(deadInvader,1);
+
         } else if (invadersMiddleArray.includes(laser)) {
-          invadersMiddleArray = invadersMiddleArray.filter(invader => invader != laser);
+          deadInvader= invadersMiddleArray.indexOf(laser);
+          invadersMiddleArray.splice(deadInvader,1);
+
         } else {
-          invadersTopArray = invadersTopArray.filter(invader => invader != laser);
+          deadInvader= invadersTopArray.indexOf(laser);
+          invadersTopArray.splice(deadInvader,1);
         }
 
       position[laser].classList.remove("invaders");
