@@ -113,7 +113,7 @@ h4 {
 }
 
 body {
-  background-image: url("./retro.jpeg");
+  background-image: url("./retro.jpg");
   display: flex;
   flex-direction: row;
   justify-content: center;
