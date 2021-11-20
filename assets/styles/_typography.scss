@@ -8,22 +8,16 @@ h1 {
     padding-left: 10px;
     padding-right: 10px;
     color: $secondary-color;
-    height: 100px;
+    height: 80px;
     top: 0px;
     color: rgb(239, 214, 251);
-}
-
-h3 {
-    height: 25px;
-    text-align: center;
-    padding: 5px;
 }
 
 h4 {
     height: 25px;
     padding: 10px;
-    margin-bottom: 10px;
     width: 450px;
     text-align: center;
     color: rgb(90, 230, 251);
+    display: none;
 }

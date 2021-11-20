@@ -1,8 +1,13 @@
 //constants
 const grid = document.querySelector(".game-grid");
-const play = document.querySelector(".gameAction");
+const play = document.querySelector(".play");
 const result = document.querySelector(".result");
 const refresh = document.querySelector(".refresh");
+
+//CONTROL BUTTONS
+const left = document.querySelector(".left");
+const right = document.querySelector(".right");
+const fire = document.querySelector(".fire")
 
 const position = grid.childNodes;
 
@@ -52,7 +57,7 @@ const moveArray = invadersArr => {
 
 //assigning enitity to grid
 //default position bottom middle
-entity = position[entity_postion].classList.add("entity");
+position[entity_postion].classList.add("entity");
 
 //function to remove explosion
 function boomGone() {
@@ -86,14 +91,16 @@ play.addEventListener("click", () => {
     //entity crashes into invader and explodes
     if (position[entity_postion].classList.contains("invaders")) {
       clearInterval(invaders);
-      position[entity_postion].classList.remove("invaders");
+      result.style.display = "block";
       position[entity_postion].classList.remove("entity")
+      position[entity_postion].classList.remove("invaders");
       position[entity_postion].classList.add("crash")
       result.innerHTML="YOU LOSE!"
     }
   }
 
   const invaders = setInterval(invaderMove, 200);
+ 
 
   //document detect when arrows are pressed and runs function to move enitity
   document.onkeydown = detectArrow;
@@ -145,7 +152,7 @@ play.addEventListener("click", () => {
 
             //explosion
             position[laser].classList.add("boom");
-            setTimeout(boomGone, 30);
+            setTimeout(boomGone, 5);
 
             if (invadersBottomArray.includes(laser)) {
                 invadersBottomArray = invadersBottomArray.filter(invader => invader != laser);
@@ -155,7 +162,6 @@ play.addEventListener("click", () => {
                 invadersTopArray = invadersTopArray.filter(invader => invader != laser);
               }
 
-
             position[laser].classList.remove("invaders");
             position[laser].classList.remove("laser");
             clearInterval(laserGone);
@@ -163,6 +169,7 @@ play.addEventListener("click", () => {
           }
 
           if (score === 15) {
+            result.style.display = "block";
             result.innerHTML = "YOU WON!";
           }
         }
@@ -181,6 +188,7 @@ refresh.addEventListener("click", () => {
     //reset invader position
   refresh.style.display = "none";
   play.style.display = "block";
+  result.style.display = "none";
 
   clearInterval(invaders);
   
@@ -215,4 +223,3 @@ refresh.addEventListener("click", () => {
 });
 
 //----------------------------------------------------------------------------
-
