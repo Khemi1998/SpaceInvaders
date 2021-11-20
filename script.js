@@ -54,39 +54,7 @@ const moveArray = invadersArr => {
 //default position bottom middle
 entity = position[entity_postion].classList.add("entity");
 
-//restart
-refresh.addEventListener("click", () => {
 
-  //reset invader position
-  position[entity_postion].classList.remove("boom");
-  result.innerHTML="";
-  position[entity_postion].classList.remove("entity");
-
-  const removeInvader = invadersArr => {
-    for (let i = 0; i < invadersArr.length; i++) {
-      position[invadersArr[i]].classList.remove("invaders");
-    }
-  };
-
-  removeInvader(invadersTopArray);
-  removeInvader(invadersMiddleArray);
-  removeInvader(invadersBottomArray);
-
-invadersTopArray = [0, 1, 2, 3, 4];
-invadersMiddleArray = [11, 12, 13, 14, 15];
-invadersBottomArray = [22, 23, 24, 25, 26];
-
-showInvader(invadersTopArray);
-showInvader(invadersMiddleArray);
-showInvader(invadersBottomArray);
-
-//orginal score and setup
-laser = 104;
-entity_postion = 104;
-score = 0;
-
-position[entity_postion].classList.add("entity");
-});
 
 //--------------------------------------------------------------------------------------
 
@@ -198,6 +166,45 @@ play.addEventListener("click", () => {
      break;
     }
   }
+
+  //restart
+refresh.addEventListener("click", () => {
+
+    //reset invader position
+  refresh.style.display = "none";
+  play.style.display = "block";
+
+  clearInterval(invaders);
+  
+  position[entity_postion].classList.remove("boom");
+  result.innerHTML="";
+  position[entity_postion].classList.remove("entity");
+  
+  const removeInvader = invadersArr => {
+      for (let i = 0; i < invadersArr.length; i++) {
+        position[invadersArr[i]].classList.remove("invaders");
+      }
+  };
+  
+    removeInvader(invadersTopArray);
+    removeInvader(invadersMiddleArray);
+    removeInvader(invadersBottomArray);
+  
+  invadersTopArray = [0, 1, 2, 3, 4];
+  invadersMiddleArray = [11, 12, 13, 14, 15];
+  invadersBottomArray = [22, 23, 24, 25, 26];
+  
+  showInvader(invadersTopArray);
+  showInvader(invadersMiddleArray);
+  showInvader(invadersBottomArray);
+
+  laser = 104;
+  entity_postion = 104;
+  score = 0;
+  
+  position[entity_postion].classList.add("entity");
+  });
 });
 
 //----------------------------------------------------------------------------
+
