@@ -7,10 +7,8 @@ const refresh = document.querySelector(".refresh");
 const position = grid.childNodes;
 
 //grid_square is a node list
-let grid_square = [];
 let laser = 104;
 let entity_postion = 104;
-let incrementer = 0;
 let score = 0;
 
 //setting up game grid
@@ -58,7 +56,36 @@ entity = position[entity_postion].classList.add("entity");
 
 //restart
 refresh.addEventListener("click", () => {
-  location.reload();
+
+  //reset invader position
+  position[entity_postion].classList.remove("boom");
+  result.innerHTML="";
+  position[entity_postion].classList.remove("entity");
+
+  const removeInvader = invadersArr => {
+    for (let i = 0; i < invadersArr.length; i++) {
+      position[invadersArr[i]].classList.remove("invaders");
+    }
+  };
+
+  removeInvader(invadersTopArray);
+  removeInvader(invadersMiddleArray);
+  removeInvader(invadersBottomArray);
+
+invadersTopArray = [0, 1, 2, 3, 4];
+invadersMiddleArray = [11, 12, 13, 14, 15];
+invadersBottomArray = [22, 23, 24, 25, 26];
+
+showInvader(invadersTopArray);
+showInvader(invadersMiddleArray);
+showInvader(invadersBottomArray);
+
+//orginal score and setup
+laser = 104;
+entity_postion = 104;
+score = 0;
+
+position[entity_postion].classList.add("entity");
 });
 
 //--------------------------------------------------------------------------------------
@@ -69,15 +96,22 @@ play.addEventListener("click", () => {
   refresh.style.display = "block";
 
   function invaderMove() {
+
+    //if there are invaders in the row then move
+    if (invadersTopArray.length > 0) {
       moveArray(invadersTopArray);
       showInvader(invadersTopArray);
-    
+    }
+
+    if (invadersMiddleArray.length > 0) {
       moveArray(invadersMiddleArray);
       showInvader(invadersMiddleArray);
-    
+    }
+
+    if (invadersBottomArray.length > 0) {
       moveArray(invadersBottomArray);
       showInvader(invadersBottomArray);
-    
+    }
     //entity crashes into invader and explodes
     if (position[entity_postion].classList.contains("invaders")) {
       clearInterval(invaders);
@@ -137,18 +171,15 @@ play.addEventListener("click", () => {
           if (position[laser].classList.contains("invaders")) {
             console.log(laser);
 
-
-            if (invadersTopArray.includes(laser)) {
-                invadersTopArray = invadersTopArray.filter(invader => invader != laser);
-            }
-            
-             else if (invadersMiddleArray.includes(laser)) {
-                invadersMiddleArray = invadersMiddleArray.filter(invader => invader != laser);
-            } 
-            
-            else {
+            if (invadersBottomArray.includes(laser)) {
                 invadersBottomArray = invadersBottomArray.filter(invader => invader != laser);
-            }
+              } else if (invadersMiddleArray.includes(laser)) {
+                invadersMiddleArray = invadersMiddleArray.filter(invader => invader != laser);
+              } else {
+                invadersTopArray = invadersTopArray.filter(invader => invader != laser);
+              }
+
+
             position[laser].classList.remove("invaders");
             position[laser].classList.remove("laser");
             clearInterval(laserGone);
@@ -160,7 +191,7 @@ play.addEventListener("click", () => {
           }
         }
         //speed 100ms
-        const laserGone = setInterval(_laser, 20);
+        const laserGone = setInterval(_laser, 25);
      break;
         default:
         position[entity_postion].classList.add("entity");
