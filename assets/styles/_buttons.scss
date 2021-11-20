@@ -8,6 +8,7 @@
     font-size: 17px;
     border-radius: 10px;
     background-color: transparent;
+    //margin-bottom: 2vh;
 }
 
 .main:hover {
@@ -26,6 +27,12 @@
     background-color: transparent;
     text-align: center;
     padding: 5px;
-    border: 3px solid green;
-    margin-bottom: 15px;
+    box-shadow: none;
+    border: transparent;
+    display: none;
+}
+
+.left, .right {
+    font-size: 60px;
+    margin-bottom: 6vh;
 }

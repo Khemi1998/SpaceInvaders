@@ -100,9 +100,91 @@ play.addEventListener("click", () => {
   }
 
   const invaders = setInterval(invaderMove, 200);
- 
 
-  //document detect when arrows are pressed and runs function to move enitity
+
+//functions to call for user to move entity
+function entityLeft() {
+  if (entity_postion != 99) {
+    entity_postion = entity_postion - 1;
+    position[entity_postion].classList.add("entity");
+  } else {
+    position[entity_postion].classList.add("entity");
+  }
+}
+
+function entityRight() {
+  if (entity_postion != 109) {
+    entity_postion = entity_postion + 1;
+    entity = position[entity_postion].classList.add("entity");
+  } else {
+    entity = position[entity_postion].classList.add("entity");
+  }
+}
+
+function shooting(){
+  laser = entity_postion;
+
+  position[entity_postion].classList.add("entity");
+
+  function _laser() {
+    position[laser].classList.remove("laser");
+    laser -= 11;
+    if (laser > 11) {
+      position[laser].classList.add("laser");
+    } else {
+      clearInterval(laserGone);
+    }
+
+    //collision
+    //stops lasers
+    if (position[laser].classList.contains("invaders")) {
+      console.log(laser);
+
+      //explosion
+      position[laser].classList.add("boom");
+      setTimeout(boomGone, 5);
+
+      if (invadersBottomArray.includes(laser)) {
+          invadersBottomArray = invadersBottomArray.filter(invader => invader != laser);
+        } else if (invadersMiddleArray.includes(laser)) {
+          invadersMiddleArray = invadersMiddleArray.filter(invader => invader != laser);
+        } else {
+          invadersTopArray = invadersTopArray.filter(invader => invader != laser);
+        }
+
+      position[laser].classList.remove("invaders");
+      position[laser].classList.remove("laser");
+      clearInterval(laserGone);
+      score++;
+    }
+
+    if (score === 15) {
+      result.style.display = "block";
+      result.innerHTML = "YOU WON!";
+    }
+  }
+  //speed 100ms
+  const laserGone = setInterval(_laser, 25);
+}
+
+  //CONTROL BUTTONS
+left.addEventListener("click", () => {
+  position[entity_postion].classList.remove("entity");
+  entityLeft();
+ });
+
+ right.addEventListener("click", () => {
+  position[entity_postion].classList.remove("entity");
+  entityRight()
+ });
+
+ fire.addEventListener("click",()=>{
+  shooting();
+ })
+
+
+
+  //KEY CONTROLS
   document.onkeydown = detectArrow;
 
   //moving the entity
@@ -113,68 +195,14 @@ play.addEventListener("click", () => {
     switch (e.key) {
       case "ArrowLeft":
         //left arrow
-        if (entity_postion != 99) {
-          entity_postion = entity_postion - 1;
-          position[entity_postion].classList.add("entity");
-        } else {
-          position[entity_postion].classList.add("entity");
-        }
+        entityLeft()
         break;
       case "ArrowRight":
         //right arrow
-        if (entity_postion != 109) {
-          entity_postion = entity_postion + 1;
-          entity = position[entity_postion].classList.add("entity");
-        } else {
-          entity = position[entity_postion].classList.add("entity");
-        }
+        entityRight();
         break;
       case "ArrowUp":
-        //up arrow
-        //shooting
-        laser = entity_postion;
-
-        position[entity_postion].classList.add("entity");
-
-        function _laser() {
-          position[laser].classList.remove("laser");
-          laser -= 11;
-          if (laser > 11) {
-            position[laser].classList.add("laser");
-          } else {
-            clearInterval(laserGone);
-          }
-
-          //collision
-          //stops lasers
-          if (position[laser].classList.contains("invaders")) {
-            console.log(laser);
-
-            //explosion
-            position[laser].classList.add("boom");
-            setTimeout(boomGone, 5);
-
-            if (invadersBottomArray.includes(laser)) {
-                invadersBottomArray = invadersBottomArray.filter(invader => invader != laser);
-              } else if (invadersMiddleArray.includes(laser)) {
-                invadersMiddleArray = invadersMiddleArray.filter(invader => invader != laser);
-              } else {
-                invadersTopArray = invadersTopArray.filter(invader => invader != laser);
-              }
-
-            position[laser].classList.remove("invaders");
-            position[laser].classList.remove("laser");
-            clearInterval(laserGone);
-            score++;
-          }
-
-          if (score === 15) {
-            result.style.display = "block";
-            result.innerHTML = "YOU WON!";
-          }
-        }
-        //speed 100ms
-        const laserGone = setInterval(_laser, 25);
+        shooting();
      break;
         default:
         position[entity_postion].classList.add("entity");

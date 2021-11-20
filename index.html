@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+     <!-- Font Awesome CDN -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Shape Invaders</title>
 </head>
 <body>
@@ -18,15 +20,16 @@
 
         <h4 class = "result"></h4>
 
-        <div class = "game-grid"></div>     
+        <div class = "game-grid"></div>   
         
         <button class= "play main">play</button>
-
+        
         <section class= "controllers">
-            <button class= "control left"></button>
+            <button class= "control left"><i class="fas fa-caret-left"></i></button>
             <button class= "control fire">FIRE</button>
-            <button class= "control right"></button>
+            <button class= "control right"><i class="fas fa-caret-right"></i></button>
         </section>
+
     </main>
 
     <script src="./script.js"></script>
