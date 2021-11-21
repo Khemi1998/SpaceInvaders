@@ -13,7 +13,8 @@ var position = grid.childNodes; //grid_square is a node list
 
 var laser = 104;
 var entity_postion = 104;
-var score = 0; //setting up game grid
+var score = 0;
+var deadInvader; //setting up game grid
 
 for (var i = 0; i < 110; i++) {
   grid_square = document.createElement("div");
@@ -131,17 +132,14 @@ play.addEventListener("click", function () {
         setTimeout(boomGone, 5);
 
         if (invadersBottomArray.includes(laser)) {
-          invadersBottomArray = invadersBottomArray.filter(function (invader) {
-            return invader != laser;
-          });
+          deadInvader = invadersBottomArray.indexOf(laser);
+          invadersBottomArray.splice(deadInvader, 1);
         } else if (invadersMiddleArray.includes(laser)) {
-          invadersMiddleArray = invadersMiddleArray.filter(function (invader) {
-            return invader != laser;
-          });
+          deadInvader = invadersMiddleArray.indexOf(laser);
+          invadersMiddleArray.splice(deadInvader, 1);
         } else {
-          invadersTopArray = invadersTopArray.filter(function (invader) {
-            return invader != laser;
-          });
+          deadInvader = invadersTopArray.indexOf(laser);
+          invadersTopArray.splice(deadInvader, 1);
         }
 
         position[laser].classList.remove("invaders");

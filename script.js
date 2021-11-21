@@ -216,7 +216,7 @@ left.addEventListener("click", () => {
     }
   }
 
-  //restart
+  //RESTART
 refresh.addEventListener("click", () => {
 
     //reset invader position
@@ -225,6 +225,7 @@ refresh.addEventListener("click", () => {
   result.style.display = "none";
 
   clearInterval(invaders);
+  boomGone();
   
   position[entity_postion].classList.remove("crash");
   result.innerHTML="";
@@ -233,6 +234,7 @@ refresh.addEventListener("click", () => {
   const removeInvader = invadersArr => {
       for (let i = 0; i < invadersArr.length; i++) {
         position[invadersArr[i]].classList.remove("invaders");
+        position[invadersArr[i]].classList.remove("boom")
       }
   };
   

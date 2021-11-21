@@ -58,3 +58,4 @@
 <p>iteration21: up to date version: variables fixed</p>
 <p>iteration22: adjust background scaling</p>
 <p>iteration22.1: adjust background scaling</p>
+<p>iteration23: fixed bug with restarted game</p>
