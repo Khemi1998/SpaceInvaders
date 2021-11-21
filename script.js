@@ -88,7 +88,7 @@ function shooting(){
 
       //explosion
       position[laser].classList.add("boom");
-      boomTime = setTimeout(boomGone, 5);
+      boomTime = setTimeout(boomGone, 50);
 
       if (invadersBottomArray.includes(laser)) {
         deadInvader= invadersBottomArray.indexOf(laser);
@@ -114,7 +114,7 @@ function shooting(){
       result.innerHTML = "YOU WON!";
     }
   }
-  //speed 100ms
+  //speed 25ms
   const laserGone = setInterval(_laser, 25);
 }
 
