@@ -65,6 +65,59 @@ function boomGone() {
     position[laser].classList.remove("boom");
 }
 
+
+//shooting function
+function shooting(){
+  laser = entity_postion;
+
+  position[entity_postion].classList.add("entity");
+
+  function _laser() {
+    position[laser].classList.remove("laser");
+    laser -= 11;
+    if (laser > 11) {
+      position[laser].classList.add("laser");
+    } else {
+      clearInterval(laserGone);
+    }
+
+    //collision
+    //stops lasers
+    if (position[laser].classList.contains("invaders")) {
+      console.log(laser);
+
+      //explosion
+      position[laser].classList.add("boom");
+      boomTime = setTimeout(boomGone, 5);
+
+      if (invadersBottomArray.includes(laser)) {
+        deadInvader= invadersBottomArray.indexOf(laser);
+        invadersBottomArray.splice(deadInvader,1);
+
+        } else if (invadersMiddleArray.includes(laser)) {
+          deadInvader= invadersMiddleArray.indexOf(laser);
+          invadersMiddleArray.splice(deadInvader,1);
+
+        } else {
+          deadInvader= invadersTopArray.indexOf(laser);
+          invadersTopArray.splice(deadInvader,1);
+        }
+
+      position[laser].classList.remove("invaders");
+      position[laser].classList.remove("laser");
+      clearInterval(laserGone);
+      score++;
+    }
+
+    if (score === 15) {
+      result.style.display = "block";
+      result.innerHTML = "YOU WON!";
+    }
+  }
+  //speed 100ms
+  const laserGone = setInterval(_laser, 25);
+}
+
 //--------------------------------------------------------------------------------------
 
 //game activation by pressing play
@@ -73,7 +126,6 @@ play.addEventListener("click", () => {
   refresh.style.display = "block";
 
   function invaderMove() {
-
     //if there are invaders in the row then move
     if (invadersTopArray.length > 0) {
       moveArray(invadersTopArray);
@@ -122,57 +174,6 @@ function entityRight() {
   }
 }
 
-function shooting(){
-  laser = entity_postion;
-
-  position[entity_postion].classList.add("entity");
-
-  function _laser() {
-    position[laser].classList.remove("laser");
-    laser -= 11;
-    if (laser > 11) {
-      position[laser].classList.add("laser");
-    } else {
-      clearInterval(laserGone);
-    }
-
-    //collision
-    //stops lasers
-    if (position[laser].classList.contains("invaders")) {
-      console.log(laser);
-
-      //explosion
-      position[laser].classList.add("boom");
-      setTimeout(boomGone, 5);
-
-      if (invadersBottomArray.includes(laser)) {
-        deadInvader= invadersBottomArray.indexOf(laser);
-        invadersBottomArray.splice(deadInvader,1);
-
-        } else if (invadersMiddleArray.includes(laser)) {
-          deadInvader= invadersMiddleArray.indexOf(laser);
-          invadersMiddleArray.splice(deadInvader,1);
-
-        } else {
-          deadInvader= invadersTopArray.indexOf(laser);
-          invadersTopArray.splice(deadInvader,1);
-        }
-
-      position[laser].classList.remove("invaders");
-      position[laser].classList.remove("laser");
-      clearInterval(laserGone);
-      score++;
-    }
-
-    if (score === 15) {
-      result.style.display = "block";
-      result.innerHTML = "YOU WON!";
-    }
-  }
-  //speed 100ms
-  const laserGone = setInterval(_laser, 25);
-}
-
   //CONTROL BUTTONS
 left.addEventListener("click", () => {
   position[entity_postion].classList.remove("entity");
@@ -183,13 +184,6 @@ left.addEventListener("click", () => {
   position[entity_postion].classList.remove("entity");
   entityRight()
  });
-
- fire.addEventListener("click",()=>{
-  shooting();
- })
-
-
-
   //KEY CONTROLS
   document.onkeydown = detectArrow;
 
@@ -218,15 +212,12 @@ left.addEventListener("click", () => {
 
   //RESTART
 refresh.addEventListener("click", () => {
-
     //reset invader position
   refresh.style.display = "none";
   play.style.display = "block";
   result.style.display = "none";
 
   clearInterval(invaders);
-  boomGone();
-  
   position[entity_postion].classList.remove("crash");
   result.innerHTML="";
   position[entity_postion].classList.remove("entity");
@@ -258,4 +249,5 @@ refresh.addEventListener("click", () => {
   });
 });
 
-//----------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+
