@@ -1,13 +1,13 @@
 //constants
 const grid = document.querySelector(".game-grid");
-const play = document.querySelector(".play");
-const result = document.querySelector(".result");
-const refresh = document.querySelector(".refresh");
+const play = document.querySelector(".game__play");
+const result = document.querySelector(".game__result");
+const refresh = document.querySelector(".game__refresh");
 
 //CONTROL BUTTONS
-const left = document.querySelector(".left");
-const right = document.querySelector(".right");
-const fire = document.querySelector(".fire")
+const left = document.querySelector(".game__left");
+const right = document.querySelector(".game__right");
+const fire = document.querySelector(".game__fire")
 
 const position = grid.childNodes;
 

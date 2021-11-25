@@ -2,7 +2,7 @@
     font-family: 'Press Start 2P', cursive;
 }
 
-h1 {
+.game__title {
     text-align: center;
     padding-top: 20px;
     padding-left: 10px;
@@ -13,7 +13,7 @@ h1 {
     color: $primary-color;
 }
 
-h4 {
+.game__result {
     height: 25px;
     padding: 10px;
     width: 450px;
@@ -23,13 +23,13 @@ h4 {
 }
 
 @media only screen and (max-width: 500px) {
-    h1 {
+    .game__title {
         padding-top: 10px;
         height: 50px;
         font-size: 20px;
     }
     
-    h4 {
+    .game__result {
         height: 20px;
         padding: 10px;
         width: 450px;
