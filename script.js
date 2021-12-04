@@ -91,36 +91,9 @@ const shooting = () => {
   const laserGone = setInterval(_laser, 25);
 };
 
-//MOVING INVADER
-const invaderMove = () => {
-  //if there are invaders in the row then move
-  if (invadersTopArray.length > 0) {
-    moveArray(invadersTopArray);
-    showInvader(invadersTopArray);
-  }
-
-  if (invadersMiddleArray.length > 0) {
-    moveArray(invadersMiddleArray);
-    showInvader(invadersMiddleArray);
-  }
-
-  if (invadersBottomArray.length > 0) {
-    moveArray(invadersBottomArray);
-    showInvader(invadersBottomArray);
-  }
-  //entity crashes into invader and explodes
-  if (position[entity_postion].classList.contains("invaders")) {
-    clearInterval(invaders);
-    result.style.display = "block";
-    position[entity_postion].classList.remove("entity");
-    position[entity_postion].classList.remove("invaders");
-    position[entity_postion].classList.add("crash");
-    result.innerHTML = "YOU LOSE!";
-  }
-};
-
 // ENTITY MOVEMENT
 const entityLeft = () => {
+  position[entity_postion].classList.remove("entity");
   if (entity_postion != 99) {
     entity_postion = entity_postion - 1;
     position[entity_postion].classList.add("entity");
@@ -130,6 +103,7 @@ const entityLeft = () => {
 };
 
 const entityRight = () => {
+  position[entity_postion].classList.remove("entity");
   if (entity_postion != 109) {
     entity_postion = entity_postion + 1;
     entity = position[entity_postion].classList.add("entity");
@@ -154,15 +128,9 @@ showInvader(invadersBottomArray);
 position[entity_postion].classList.add("entity");
 
 //CONTROL BUTTONS
-left.addEventListener("click", () => {
-  position[entity_postion].classList.remove("entity");
-  entityLeft();
-});
+left.addEventListener("click", entityLeft);
 
-right.addEventListener("click", () => {
-  position[entity_postion].classList.remove("entity");
-  entityRight();
-});
+right.addEventListener("click", entityRight);
 
 fire.addEventListener("click", shooting);
 
@@ -171,6 +139,33 @@ play.addEventListener("click", () => {
   play.style.display = "none";
   refresh.style.display = "block";
 
+  //MOVING INVADER
+  const invaderMove = () => {
+    //if there are invaders in the row then move
+    if (invadersTopArray.length > 0) {
+      moveArray(invadersTopArray);
+      showInvader(invadersTopArray);
+    }
+
+    if (invadersMiddleArray.length > 0) {
+      moveArray(invadersMiddleArray);
+      showInvader(invadersMiddleArray);
+    }
+
+    if (invadersBottomArray.length > 0) {
+      moveArray(invadersBottomArray);
+      showInvader(invadersBottomArray);
+    }
+    //entity crashes into invader and explodes
+    if (position[entity_postion].classList.contains("invaders")) {
+      clearInterval(invaders);
+      result.style.display = "block";
+      position[entity_postion].classList.remove("entity");
+      position[entity_postion].classList.remove("invaders");
+      position[entity_postion].classList.add("crash");
+      result.innerHTML = "YOU LOSE!";
+    }
+  };
   const invaders = setInterval(invaderMove, 200);
 
   //KEY CONTROLS
@@ -185,7 +180,7 @@ play.addEventListener("click", () => {
       case "ArrowRight": //right arrow
         entityRight();
         break;
-      case "ArrowUp":
+      case "ArrowUp": //up arrow
         shooting();
         break;
       default:
