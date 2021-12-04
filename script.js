@@ -97,7 +97,7 @@ const shooting = () => {
 const entityLeft = () => {
   position[entity_postion].classList.remove("entity");
   if (entity_postion != 99) {
-    entity_postion = entity_postion - 1;
+    entity_postion--;
     position[entity_postion].classList.add("entity");
   } else {
     position[entity_postion].classList.add("entity");
@@ -107,7 +107,7 @@ const entityLeft = () => {
 const entityRight = () => {
   position[entity_postion].classList.remove("entity");
   if (entity_postion != 109) {
-    entity_postion = entity_postion + 1;
+    entity_postion++;
     entity = position[entity_postion].classList.add("entity");
   } else {
     entity = position[entity_postion].classList.add("entity");
