@@ -1,0 +1,23 @@
+.game-grid {
+  height: 400px;
+  width: 450px;
+  display: flex;
+  flex-wrap: wrap;
+
+  > div {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .game-grid {
+    height: 200px;
+    width: 225px;
+
+    > div {
+      height: 20px;
+      width: 20px;
+    }
+  }
+}

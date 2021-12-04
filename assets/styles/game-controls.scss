@@ -1,0 +1,18 @@
+.game__controll_buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 3vh;
+    margin-bottom: 5vh;
+    text-align: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 500px) {
+    .game__controll_button {
+        //show control
+        display: block;
+        margin-bottom: 0.5vh;
+        justify-content: space-between;
+    }
+}
