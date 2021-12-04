@@ -7,7 +7,7 @@ const refresh = document.querySelector(".game__refresh");
 //CONTROL BUTTONS
 const left = document.querySelector(".game__left");
 const right = document.querySelector(".game__right");
-const fire = document.querySelector(".game__fire")
+const fire = document.querySelector(".game__fire");
 
 const position = grid.childNodes;
 
@@ -29,7 +29,7 @@ let invadersMiddleArray = [11, 12, 13, 14, 15];
 let invadersBottomArray = [22, 23, 24, 25, 26];
 
 //assigning invaders to grid
-const showInvader = invadersArr => {
+const showInvader = (invadersArr) => {
   for (let i = 0; i < invadersArr.length; i++) {
     position[invadersArr[i]].classList.add("invaders");
   }
@@ -40,17 +40,16 @@ showInvader(invadersMiddleArray);
 showInvader(invadersBottomArray);
 
 //invaders movement
-const moveArray = invadersArr => {
-
-    //declaring the last invader in each row
-    let lastNumber = invadersArr[invadersArr.length - 1];
-    //declaring the first invader in each row and  removing them from array
-    let firstItem = invadersArr.shift();
-    //removing class invaders from the previous first row invader
-    position[firstItem].classList.remove("invaders");
-    //adding new invader at the end or array row to simulate movement
-    invadersArr.push(lastNumber + 1);
-  };
+const moveArray = (invadersArr) => {
+  //declaring the last invader in each row
+  let lastNumber = invadersArr[invadersArr.length - 1];
+  //declaring the first invader in each row and  removing them from array
+  let firstItem = invadersArr.shift();
+  //removing class invaders from the previous first row invader
+  position[firstItem].classList.remove("invaders");
+  //adding new invader at the end or array row to simulate movement
+  invadersArr.push(lastNumber + 1);
+};
 
 //assigning enitity to grid
 //default position bottom middle
@@ -58,12 +57,11 @@ position[entity_postion].classList.add("entity");
 
 //function to remove explosion
 function boomGone() {
-    position[laser].classList.remove("boom");
+  position[laser].classList.remove("boom");
 }
 
-
 //shooting function
-  const shooting = () => {
+const shooting = () => {
   laser = entity_postion;
 
   position[entity_postion].classList.add("entity");
@@ -87,17 +85,15 @@ function boomGone() {
       boomTime = setTimeout(boomGone, 50);
 
       if (invadersBottomArray.includes(laser)) {
-        deadInvader= invadersBottomArray.indexOf(laser);
-        invadersBottomArray.splice(deadInvader,1);
-
-        } else if (invadersMiddleArray.includes(laser)) {
-          deadInvader= invadersMiddleArray.indexOf(laser);
-          invadersMiddleArray.splice(deadInvader,1);
-
-        } else {
-          deadInvader= invadersTopArray.indexOf(laser);
-          invadersTopArray.splice(deadInvader,1);
-        }
+        deadInvader = invadersBottomArray.indexOf(laser);
+        invadersBottomArray.splice(deadInvader, 1);
+      } else if (invadersMiddleArray.includes(laser)) {
+        deadInvader = invadersMiddleArray.indexOf(laser);
+        invadersMiddleArray.splice(deadInvader, 1);
+      } else {
+        deadInvader = invadersTopArray.indexOf(laser);
+        invadersTopArray.splice(deadInvader, 1);
+      }
 
       position[laser].classList.remove("invaders");
       position[laser].classList.remove("laser");
@@ -109,10 +105,10 @@ function boomGone() {
       result.style.display = "block";
       result.innerHTML = "YOU WON!";
     }
-  }
+  };
   //speed 25ms
   const laserGone = setInterval(_laser, 25);
-}
+};
 
 fire.addEventListener("click", shooting);
 
@@ -143,57 +139,55 @@ play.addEventListener("click", () => {
     if (position[entity_postion].classList.contains("invaders")) {
       clearInterval(invaders);
       result.style.display = "block";
-      position[entity_postion].classList.remove("entity")
+      position[entity_postion].classList.remove("entity");
       position[entity_postion].classList.remove("invaders");
-      position[entity_postion].classList.add("crash")
-      result.innerHTML="YOU LOSE!"
+      position[entity_postion].classList.add("crash");
+      result.innerHTML = "YOU LOSE!";
     }
-  }
+  };
 
   const invaders = setInterval(invaderMove, 200);
 
+  //functions to call for user to move entity
+  const entityLeft = () => {
+    if (entity_postion != 99) {
+      entity_postion = entity_postion - 1;
+      position[entity_postion].classList.add("entity");
+    } else {
+      position[entity_postion].classList.add("entity");
+    }
+  };
 
-//functions to call for user to move entity
-const entityLeft = () => {
-  if (entity_postion != 99) {
-    entity_postion = entity_postion - 1;
-    position[entity_postion].classList.add("entity");
-  } else {
-    position[entity_postion].classList.add("entity");
-  }
-}
-
-const entityRight = () => {
-  if (entity_postion != 109) {
-    entity_postion = entity_postion + 1;
-    entity = position[entity_postion].classList.add("entity");
-  } else {
-    entity = position[entity_postion].classList.add("entity");
-  }
-}
+  const entityRight = () => {
+    if (entity_postion != 109) {
+      entity_postion = entity_postion + 1;
+      entity = position[entity_postion].classList.add("entity");
+    } else {
+      entity = position[entity_postion].classList.add("entity");
+    }
+  };
 
   //CONTROL BUTTONS
-left.addEventListener("click", () => {
-  position[entity_postion].classList.remove("entity");
-  entityLeft();
- });
+  left.addEventListener("click", () => {
+    position[entity_postion].classList.remove("entity");
+    entityLeft();
+  });
 
- right.addEventListener("click", () => {
-  position[entity_postion].classList.remove("entity");
-  entityRight()
- });
+  right.addEventListener("click", () => {
+    position[entity_postion].classList.remove("entity");
+    entityRight();
+  });
   //KEY CONTROLS
 
-
   //moving the entity
-const detectArrow =(e) =>{
+  const detectArrow = (e) => {
     position[entity_postion].classList.remove("entity");
 
     //stays on bottom line
     switch (e.key) {
       case "ArrowLeft":
         //left arrow
-        entityLeft()
+        entityLeft();
         break;
       case "ArrowRight":
         //right arrow
@@ -201,53 +195,52 @@ const detectArrow =(e) =>{
         break;
       case "ArrowUp":
         shooting();
-     break;
-        default:
+        break;
+      default:
         position[entity_postion].classList.add("entity");
-     break;
+        break;
     }
-  }
+  };
 
   document.onkeydown = detectArrow;
 
   //RESTART
-refresh.addEventListener("click", () => {
+  refresh.addEventListener("click", () => {
     //reset invader position
-  refresh.style.display = "none";
-  play.style.display = "block";
-  result.style.display = "none";
+    refresh.style.display = "none";
+    play.style.display = "block";
+    result.style.display = "none";
 
-  clearInterval(invaders);
-  position[entity_postion].classList.remove("crash");
-  result.innerHTML="";
-  position[entity_postion].classList.remove("entity");
-  
-  const removeInvader = (invadersArr) => {
+    clearInterval(invaders);
+    position[entity_postion].classList.remove("crash");
+    result.innerHTML = "";
+    position[entity_postion].classList.remove("entity");
+
+    const removeInvader = (invadersArr) => {
       for (let i = 0; i < invadersArr.length; i++) {
         position[invadersArr[i]].classList.remove("invaders");
-        position[invadersArr[i]].classList.remove("boom")
+        position[invadersArr[i]].classList.remove("boom");
       }
-  };
-  
+    };
+
     removeInvader(invadersTopArray);
     removeInvader(invadersMiddleArray);
     removeInvader(invadersBottomArray);
-  
-  invadersTopArray = [0, 1, 2, 3, 4];
-  invadersMiddleArray = [11, 12, 13, 14, 15];
-  invadersBottomArray = [22, 23, 24, 25, 26];
-  
-  showInvader(invadersTopArray);
-  showInvader(invadersMiddleArray);
-  showInvader(invadersBottomArray);
 
-  laser = 104;
-  entity_postion = 104;
-  score = 0;
-  
-  position[entity_postion].classList.add("entity");
+    invadersTopArray = [0, 1, 2, 3, 4];
+    invadersMiddleArray = [11, 12, 13, 14, 15];
+    invadersBottomArray = [22, 23, 24, 25, 26];
+
+    showInvader(invadersTopArray);
+    showInvader(invadersMiddleArray);
+    showInvader(invadersBottomArray);
+
+    laser = 104;
+    entity_postion = 104;
+    score = 0;
+
+    position[entity_postion].classList.add("entity");
   });
 });
 
 //---------------------------------------------------------------------------
-
