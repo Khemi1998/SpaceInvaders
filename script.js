@@ -41,7 +41,9 @@ const moveArray = (invadersArr) => {
 
 //REMOVE BOOM
 const boomGone = () => {
-  position[laser].classList.remove("boom");
+  for (let i = 0; i < 110; i++) {
+    position[i].classList.remove("boom");
+  }
 };
 
 //SHOOTING
