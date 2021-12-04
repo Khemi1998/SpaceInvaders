@@ -20,7 +20,6 @@ let deadInvader;
 //setting up game grid
 for (let i = 0; i < 110; i++) {
   grid_square = document.createElement("div");
-
   grid.appendChild(grid_square);
 }
 
@@ -45,13 +44,10 @@ const moveArray = invadersArr => {
 
     //declaring the last invader in each row
     let lastNumber = invadersArr[invadersArr.length - 1];
-
     //declaring the first invader in each row and  removing them from array
     let firstItem = invadersArr.shift();
-
     //removing class invaders from the previous first row invader
     position[firstItem].classList.remove("invaders");
-
     //adding new invader at the end or array row to simulate movement
     invadersArr.push(lastNumber + 1);
   };
@@ -67,12 +63,12 @@ function boomGone() {
 
 
 //shooting function
-function shooting(){
+  const shooting = () => {
   laser = entity_postion;
 
   position[entity_postion].classList.add("entity");
 
-  function _laser() {
+  const _laser = () => {
     position[laser].classList.remove("laser");
     laser -= 11;
     if (laser > 11) {
@@ -118,6 +114,8 @@ function shooting(){
   const laserGone = setInterval(_laser, 25);
 }
 
+fire.addEventListener("click", shooting);
+
 //--------------------------------------------------------------------------------------
 
 //game activation by pressing play
@@ -125,7 +123,7 @@ play.addEventListener("click", () => {
   play.style.display = "none";
   refresh.style.display = "block";
 
-  function invaderMove() {
+  const invaderMove = () => {
     //if there are invaders in the row then move
     if (invadersTopArray.length > 0) {
       moveArray(invadersTopArray);
@@ -156,7 +154,7 @@ play.addEventListener("click", () => {
 
 
 //functions to call for user to move entity
-function entityLeft() {
+const entityLeft = () => {
   if (entity_postion != 99) {
     entity_postion = entity_postion - 1;
     position[entity_postion].classList.add("entity");
@@ -165,7 +163,7 @@ function entityLeft() {
   }
 }
 
-function entityRight() {
+const entityRight = () => {
   if (entity_postion != 109) {
     entity_postion = entity_postion + 1;
     entity = position[entity_postion].classList.add("entity");
@@ -185,10 +183,10 @@ left.addEventListener("click", () => {
   entityRight()
  });
   //KEY CONTROLS
-  document.onkeydown = detectArrow;
+
 
   //moving the entity
-  function detectArrow(e) {
+const detectArrow =(e) =>{
     position[entity_postion].classList.remove("entity");
 
     //stays on bottom line
@@ -210,6 +208,8 @@ left.addEventListener("click", () => {
     }
   }
 
+  document.onkeydown = detectArrow;
+
   //RESTART
 refresh.addEventListener("click", () => {
     //reset invader position
@@ -222,7 +222,7 @@ refresh.addEventListener("click", () => {
   result.innerHTML="";
   position[entity_postion].classList.remove("entity");
   
-  const removeInvader = invadersArr => {
+  const removeInvader = (invadersArr) => {
       for (let i = 0; i < invadersArr.length; i++) {
         position[invadersArr[i]].classList.remove("invaders");
         position[invadersArr[i]].classList.remove("boom")

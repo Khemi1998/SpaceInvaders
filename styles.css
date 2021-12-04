@@ -114,7 +114,7 @@
 }
 
 body {
-  background-image: url("./retro.jpg");
+  background-image: url("./assets/images/retro.jpg");
   display: flex;
   flex-direction: row;
   justify-content: center;
