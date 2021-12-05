@@ -29,9 +29,11 @@
 
 <h2>Problems I encountered</h2>
 
-<p>I used different methods to make both the laser and invaders move including manually choosing positions on the grid which was inefficient. The next idea was putting all the invaders into an array and looping through each invader and setting a time interval in order to create movement. The loop method worked however it was difficult to manage the collision between the invader and laser. The method I chose was to create a loop for each row and use callback functions instead of for-loops which reduced the amount of code written and made setting and clearing time intervals easier. </p>
+<p>I used different methods to make both the laser and invaders move including manually choosing positions on the grid which was inefficient. The next idea was putting all the invaders into an array and looping through each invader and setting a time interval in order to create movement. The loop method worked however it was difficult to manage the collision between the invader and laser. The method I chose was to create a loop for each row and use callback functions instead of for-loops which reduced the amount of code written and made setting and clearing time intervals easier.</p>
 
-<p>Further improvement on the game would include sorting the timing issue out. This game glitches if the entity is continously shooting lasers quickly (i.e when the up-arrow is held down.) Another improvement would be to have the invader that is colliding with the laser to disappear instead of the last invader in the rows.</p>
+<p>A bug with the 'boom' classlist meant that when the up arrow was pressed quickly some positions would be stuck with the classlist. Thus bug was solved by adjusting the boom function to make every position on the grid remove the 'boom' classlist instead of targeting just the collision position.</P>
+
+<p>Further improvement would include condensing the code. I plan to re-visit this project to refactor the code further.</p>
 
 <h2>Commits</h2>
 <p>iteration1: creating files and sorting out layout using html, CSS and SASS</p>
