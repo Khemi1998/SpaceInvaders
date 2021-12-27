@@ -1,16 +1,20 @@
-# Shape Invaders
+# Shape Invaders 👾
 
 <p>Created by Khemi Ramyead</p>
 
-<h2>Introduction</h2>
+https://khemi1998.github.io/SpaceInvaders/
+
+![Screenshot 2021-12-27 at 20 13 32](https://user-images.githubusercontent.com/93138312/147504272-b6114ad4-4603-43d8-aa23-1e536ac969e8.png)
+
+<h2>Introduction 🎮 </h2>
 
 <p>ShapeInvaders is my rendition on SpaceInvaders which follows the same concept of shooting the invaders before they reach the entity.</p>
 
-<h2>Design</h2>
+<h2>▫️◽️ Design ◽️▫️</h2>
 
 <p>The game was initally intended to play on a desktop so I can learn and implent using the arrow keys into the code. I then decided to devlope the game further so buttons would appear on smaller devices. If was to redo this project I would begin with the mobile-design first approach to make it easier to scale to larger devices.</p>
 
-<h2>Psuedo-Code</h2>
+<h2>◾️◼️ Psuedo-Code ◼️◾️</h2>
 
 <p>The thought process is as follows:</p>
 <ul>
@@ -27,7 +31,7 @@
 <li>if user hits all invaders before they reach the entity user wins</li>
 </ul>
 
-<h2>Problems I encountered</h2>
+<h2>Problems I encountered ⚒️</h2>
 
 <p>I used different methods to make both the laser and invaders move including manually choosing positions on the grid which was inefficient. The next idea was putting all the invaders into an array and looping through each invader and setting a time interval in order to create movement. The loop method worked however it was difficult to manage the collision between the invader and laser. The method I chose was to create a loop for each row and use callback functions instead of for-loops which reduced the amount of code written and made setting and clearing time intervals easier.</p>
 
@@ -35,7 +39,7 @@
 
 <p>Further improvement would include condensing the code. I plan to re-visit this project to refactor the code further.</p>
 
-<h2>Commits</h2>
+<h2>Commits 📝</h2>
 <p>iteration1: creating files and sorting out layout using html, CSS and SASS</p>
 <p>iteration2: Layout completed</p>
 <p>iteration3: added grid template, entity moves</p>
