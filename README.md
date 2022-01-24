@@ -10,6 +10,13 @@ https://khemi1998.github.io/SpaceInvaders/
 
 <p>ShapeInvaders is my rendition on SpaceInvaders which follows the same concept of shooting the invaders before they reach the entity.</p>
 
+<h2>Technologies 🧠</h2>
+<ul>
+  <li>JavaScript</li>
+  <li>CSS</li>
+  <li>HTML</li>
+</ul>
+
 <h2>▫️◽️ Design ◽️▫️</h2>
 
 <p>The game was initally intended to play on a desktop so I can learn and implent using the arrow keys into the code. I then decided to devlope the game further so buttons would appear on smaller devices. If was to redo this project I would begin with the mobile-design first approach to make it easier to scale to larger devices.</p>
